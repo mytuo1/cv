@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIMITAR YANKOV • Senior Solution Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --navy:      #1e3a8a;   /* Deep Navy - Primary (Golden Ratio base) */
+            --teal:      #0f766e;   /* Deep Teal - Secondary accent */
+            --bronze:    #92400e;   /* Warm Bronze - Tertiary (subtle) */
+            --bg:        #ffffff;   /* Pure white - Maximum contrast */
+            --surface:   #f8fafc;   /* Very light grey for cards */
+            --text:      #0f172a;   /* Deep navy-grey - Primary text */
+            --text-secondary: #334155; /* Slate - Secondary text */
+            --muted:     #64748b;   /* Muted text */
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: #0f172a;
+            margin: 0; padding: 0;
+        }
+
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .glass {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--navy);
+        }
+
+        .chapter-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .chapter-label .cl-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--teal);
+            opacity: 0.75;
+        }
+        .chapter-label .cl-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: #475569;
+        }
+
+        .about-prose strong {
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .stats-strip {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr 1px 1fr;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 22px 0;
+        }
+        .stats-strip .s-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem; font-weight: 700;
+            color: var(--navy);
+        }
+        .stats-strip .s-lbl {
+            font-size: 9.5px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--muted);
+        }
+
+        .info-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 15px 18px;
+        }
+
+        .pulse-dot {
+            width: 6px; height: 6px;
+            background: var(--teal); border-radius: 50%;
+            display: inline-block;
+        }
+
+        .tech-pill {
+            padding: 3px 10px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 999px; font-size: 11px; color: var(--muted);
+        }
+
+        .experience-card {
+            border-left: 3px solid var(--navy);
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.1);
+        }
+
+        .nav-link::after {
+            background: linear-gradient(to right, var(--navy), var(--teal));
+        }
+
+        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 42px; }
+        .inner { max-width: 900px; margin: 0 auto; }
+
+        @media print {
+            @page { size: A4 portrait; margin: 38pt 52pt 30pt 52pt; }
+            
+            body { 
+                background: #f8fafc !important; 
+                color: #0f172a !important; 
+                font-size: 9pt; 
+                line-height: 1.55; 
+            }
+            
+            nav#site-nav {
+                position: static !important;
+                padding: 8pt 52pt 10pt 52pt !important;
+                background: #f8fafc !important;
+                border-bottom: 1.5pt solid var(--navy) !important;
+                margin-bottom: 14pt !important;
+            }
+            nav#site-nav .nav-screen-links, 
+            nav#site-nav .nav-screen-btns { display: none !important; }
+            nav#site-nav .nav-print-right { 
+                display: flex !important; 
+                gap: 16pt; 
+                font-size: 7pt; 
+                color: #64748b !important; 
+            }
+            
+            .print-ch { 
+                display: block !important; 
+                margin-bottom: 14pt; 
+                padding-bottom: 9pt; 
+                border-bottom: 2pt solid var(--navy) !important; 
+            }
+            .print-ch .pch-eyebrow { 
+                font-size: 7pt !important; 
+                color: var(--navy) !important; 
+            }
+            .print-ch .pch-title { 
+                font-size: 22pt !important; 
+                color: #0f172a !important; 
+                font-family: 'Space Grotesk', sans-serif !important;
+            }
+            .chapter-label { display: none !important; }
+            
+            .glass, .experience-card, .project-card {
+                background: #ffffff !important;
+                border: 1pt solid #e2e8f0 !important;
+                break-inside: avoid !important;
+            }
+            .experience-card { border-left: 3pt solid var(--navy) !important; }
+            
+            #experience { page-break-before: always !important; }
+            
+            .about-prose strong { color: var(--teal) !important; }
+            .stats-strip .s-num { color: var(--navy) !important; }
+            
+            .section-header { color: var(--navy) !important; }
+        }
+        
+        .print-ch { display: none; }
+        nav#site-nav .nav-print-right { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="wrap">
+            <div class="flex items-center justify-between" style="height:64px;">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--navy), var(--teal));">
+                        <span class="text-white font-bold text-sm tracking-tighter">DY</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-base tracking-tight">DIMITAR YANKOV</div>
+                        <div class="text-[9px] text-zinc-400 -mt-0.5 tracking-[2.5px] uppercase">Solution Architect</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-x-8 text-sm text-zinc-400">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Expertise</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <a href="mailto:yankov.dimitur@gmail.com" class="px-4 py-1.5 text-xs border border-white/20 hover:bg-white/5 rounded-3xl transition flex items-center gap-x-2 text-[#0f172a]">
+                        <i class="fa-solid fa-envelope text-xs"></i><span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dimitar-yankov-845a4b143/" target="_blank" class="px-4 py-1.5 text-xs border border-white/20 hover:bg-white/5 rounded-3xl transition flex items-center gap-x-2 text-[#0f172a]">
+                        <i class="fa-brands fa-linkedin text-sm"></i><span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div id="hero" class="pt-16 pb-6 wrap">
+        <div class="inner text-center pt-12">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-3xl border border-white/10 bg-white/5 text-[10.5px] tracking-[2.5px] text-zinc-400 mb-6">
+                <span class="pulse-dot"></span>
+                OPEN TO SELECT OPPORTUNITIES &bull; 2026
+            </div>
+
+            <h1 class="font-display text-6xl tracking-tighter mb-3">DIMITAR YANKOV</h1>
+            <p class="text-2xl mb-2" style="color: var(--navy);">Senior Solution Architect &amp; Consultant</p>
+            <p class="text-lg font-medium mb-8" style="color: var(--navy);">Cloud &nbsp;&middot;&nbsp; IBM Z &nbsp;&middot;&nbsp; AI Systems</p>
+
+            <div class="flex items-center justify-center gap-x-3">
+                <a href="#projects" class="inline-flex items-center gap-x-2.5 px-7 py-3.5 text-white font-semibold rounded-3xl text-sm hover:brightness-110 transition-all" style="background: linear-gradient(to right, var(--navy), var(--teal));">
+                    <span>Explore My Work</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <a href="mailto:yankov.dimitur@gmail.com" class="inline-flex items-center gap-x-2 px-6 py-3.5 border border-white/20 text-[#0f172a] hover:bg-white/5 rounded-3xl text-sm transition-all">
+                    <i class="fa-solid fa-envelope text-xs"></i><span>Get in Touch</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about" class="ps wrap" style="padding-bottom:48px;">
+        <div class="inner">
+            <div class="chapter-label">
+                <span class="cl-num">Chapter 01</span>
+                <span class="cl-sep">/</span>
+                <span class="cl-name">The Architect</span>
+            </div>
+
+            <div class="print-ch">
+                <span class="pch-eyebrow">Chapter 01 &nbsp;/&nbsp; The Architect</span>
+                <span class="pch-title">I build systems that last.</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <div class="lg:col-span-7">
+                    <h2 class="font-display text-4xl tracking-tight mb-6" style="color: var(--navy);">I build systems that last.</h2>
+                    
+                    <div class="space-y-4 text-[15px] leading-relaxed" style="color: #0f172a;">
+                        <p>With a <strong>decade of hands-on experience</strong> architecting mission-critical infrastructure, I specialize in bridging the old and the new — from <strong>VMware and mainframes</strong> to <strong>serverless GenAI platforms</strong> and <strong>hybrid cloud strategies</strong>.</p>
+                        <p>I've led large-scale migrations for global organizations — <strong>Elsevier</strong>, <strong>World Bank Group</strong>, <strong>Emerchantpay</strong> — designed <strong>QEMU virtualization layers</strong> and <strong>Java HSM adapters</strong> on <strong>IBM Z / s390x</strong>, drove team reforms that dramatically accelerated delivery, and shipped production <strong>GenAI systems</strong>. Currently architecting hybrid solutions on <strong>IBM Z / s390x</strong> — reverse-engineering, benchmarking, and modernizing legacy workloads.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-4">
+                    <div class="stats-strip">
+                        <div class="text-center"><span class="s-num">50+</span><span class="s-lbl block">Enterprise Migrations</span></div>
+                        <div class="bg-[#e2e8f0] w-px self-stretch my-1"></div>
+                        <div class="text-center"><span class="s-num">2</span><span class="s-lbl block">Startups Co-Founded</span></div>
+                        <div class="bg-[#e2e8f0] w-px self-stretch my-1"></div>
+                        <div class="text-center"><span class="s-num">∞</span><span class="s-lbl block">Systems Optimized</span></div>
+                    </div>
+
+                    <div class="info-panel">
+                        <div class="flex items-center gap-x-2 mb-3">
+                            <span class="pulse-dot"></span>
+                            <span class="text-[10.5px] font-semibold tracking-[2px] uppercase" style="color: #10b981;">Available for select work</span>
+                        </div>
+                        <div class="text-sm text-zinc-500 space-y-1">
+                            <div><i class="fa-solid fa-location-dot mr-2" style="color: var(--teal);"></i> Sofia, Bulgaria &bull; Remote Worldwide</div>
+                            <div><i class="fa-solid fa-envelope mr-2" style="color: var(--teal);"></i> yankov.dimitur@gmail.com</div>
+                            <div><i class="fa-brands fa-linkedin mr-2" style="color: var(--teal);"></i> linkedin.com/in/dimitar-yankov-845a4b143</div>
+                        </div>
+                    </div>
+
+                    <div class="info-panel">
+                        <div class="text-[9.5px] uppercase tracking-[2.5px] text-zinc-500 mb-3">Current Focus Areas</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-pill">IBM Z / s390x</span>
+                            <span class="tech-pill">Hybrid Cloud</span>
+                            <span class="tech-pill">GenAI Systems</span>
+                            <span class="tech-pill">Architecture</span>
+                            <span class="tech-pill">Cost Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div id="experience" class="ps wrap" style="padding-bottom:48px;">
+        <div class="inner">
+            <div class="chapter-label">
+                <span class="cl-num">Chapter 02</span>
+                <span class="cl-sep">/</span>
+                <span class="cl-name">Journey</span>
+            </div>
+
+            <div class="print-ch">
+                <span class="pch-eyebrow">Chapter 02 &nbsp;/&nbsp; Journey</span>
+                <span class="pch-title">Experience</span>
+            </div>
+
+            <h2 class="section-header mb-8">Experience</h2>
+
+            <div class="relative pl-8 border-l-2 border-[#e2e8f0] space-y-8">
+                
+                <!-- IBM Z -->
+                <div class="relative">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full" style="background: var(--navy); box-shadow: 0 0 0 4px rgba(30,58,138,.2);"></div>
+                    <div class="glass rounded-3xl p-7 experience-card">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="flex items-center gap-x-3 flex-wrap">
+                                    <div class="font-semibold text-xl">Solution Architect</div>
+                                    <span class="px-3 py-0.5 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-full border border-emerald-500/20">IBM Z Ecosystem</span>
+                                    <span class="px-2 py-0.5 bg-cyan-500/10 text-cyan-600 text-[10px] font-medium rounded-full border border-cyan-500/20">CURRENT</span>
+                                </div>
+                                <div class="text-zinc-400 text-sm mt-1">MAY 2025 – PRESENT &bull; Sofia, Bulgaria</div>
+                            </div>
+                        </div>
+                        <div class="text-[#0f172a] text-[14px] leading-relaxed">
+                            Specializing in s390x mainframe modernization, hybrid cloud strategy, and high-performance Java/Linux workloads.
+                            <ul class="mt-3 space-y-2 text-sm">
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Designed and implemented QEMU-based virtualization layer over s390x enabling lift-and-shift of x86 applications (successfully ported 12+ production workloads with zero downtime)</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Built a production-grade Java adapter for IBM HSM exposing 14 critical cryptographic functions (now used across 3 production environments)</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Drove major process reform: separated business and technical teams → delivery time reduced by 40% and team velocity increased by 60%</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Architected hybrid IBM Z + AWS/Azure solutions with clear ROI models and performance benchmarking (delivered 3 successful POCs with measurable TCO reduction)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elsevier -->
+                <div class="relative">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full" style="background: var(--navy); box-shadow: 0 0 0 4px rgba(30,58,138,.2);"></div>
+                    <div class="glass rounded-3xl p-7 experience-card">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="flex items-center gap-x-3 flex-wrap">
+                                    <div class="font-semibold text-xl">Senior DevOps Engineer</div>
+                                    <span class="px-3 py-0.5 bg-white/10 text-zinc-600 text-xs font-medium rounded-full">Elsevier</span>
+                                </div>
+                                <div class="text-zinc-400 text-sm mt-1">JUL 2024 – APR 2025 &bull; Sofia, Bulgaria</div>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-sm text-[#0f172a]">
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Carried out migrations of 7+ applications from Azure/On-prem to AWS (Django/Celery/PostgreSQL/Adminer/Nginx/Apache stacks) with zero downtime</li>
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Designed GitHub Actions + Terraform pipelines for complex AWS environments; containerization via Helm/EKS (reduced deployment time by 65%)</li>
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Created comprehensive READMEs, How-to's, monitoring dashboards and stakeholder handovers for all migrated applications</li>
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Built automated GenAI blog poster with prompt guardrails — now used daily by marketing team at scale</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Emerchantpay -->
+                <div class="relative">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full" style="background: var(--navy); box-shadow: 0 0 0 4px rgba(30,58,138,.2);"></div>
+                    <div class="glass rounded-3xl p-7 experience-card">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="flex items-center gap-x-3 flex-wrap">
+                                    <div class="font-semibold text-xl">Senior DevOps Engineer</div>
+                                    <span class="px-3 py-0.5 bg-white/10 text-zinc-600 text-xs font-medium rounded-full">Emerchantpay</span>
+                                </div>
+                                <div class="text-zinc-400 text-sm mt-1">JAN – JUL 2024</div>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-sm text-[#0f172a]">
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Created full architecture plan for VMware-to-AWS migration with detailed effort/cost analysis (approved and executed)</li>
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Executed full modernization: ESXi → EKS/Helm, local DB → RDS, Puppet/Ansible → dynamic IaC with Terraform (completed in 6 months)</li>
+                            <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Wrote comprehensive how-to's, READMEs and technical documentation; delivered full knowledge handover to stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- VMware -->
+                <div class="relative">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full" style="background: var(--navy); box-shadow: 0 0 0 4px rgba(30,58,138,.2);"></div>
+                    <div class="glass rounded-3xl p-7 experience-card">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <div class="flex items-center gap-x-3 flex-wrap">
+                                    <div class="font-semibold text-xl">Senior DevOps Engineer</div>
+                                    <span class="px-3 py-0.5 bg-white/10 text-zinc-600 text-xs font-medium rounded-full">VMware</span>
+                                </div>
+                                <div class="text-zinc-400 text-sm mt-1">JAN 2022 – JAN 2024</div>
+                            </div>
+                        </div>
+                        <div class="text-[#0f172a] text-[14px] leading-relaxed">
+                            Built and maintained the full automation stack (Bamboo, Ansible, VMware Aria Automation, vRO) for 200+ client environments across multiple regions.
+                            <ul class="mt-3 space-y-2 text-sm">
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Created and maintained 50+ Bamboo pipelines for proprietary cloud deployment</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Created and maintained 80+ Ansible playbooks for infrastructure configuration automation</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Handled creation/maintenance of all current/future VMware clients' environments (OpenShift, Kubernetes, Docker, 3rd party software)</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Deployed environments via VMware Aria Automation, vSphere, vRealize Operations (VROps), vRealize Orchestrator (VRO) and proprietary CLI</li>
+                                <li class="flex items-start gap-x-2"><span class="mt-0.5 flex-shrink-0" style="color: var(--teal);">▸</span> Contributed to software design, research and analysis for automation design across 15+ major client projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Earlier Roles -->
+            <div class="mt-10">
+                <div class="text-[10px] uppercase tracking-[3px] text-zinc-500 font-semibold mb-5">Earlier Roles</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="glass rounded-2xl p-5">
+                        <div class="font-semibold">DevOps Senior Engineer</div>
+                        <div class="text-[10.5px] font-medium text-emerald-600 mt-0.5">World Bank Group &bull; 2021–2022</div>
+                        <div class="text-zinc-400 mt-2 text-xs leading-relaxed">Designed bidirectional Azure Monitoring &harr; ServiceNow webhook automation, AKS cluster deployments, and PaaS/SaaS provisioning via Terraform for a major financial client.</div>
+                    </div>
+                    <div class="glass rounded-2xl p-5">
+                        <div class="font-semibold">DevOps Engineer</div>
+                        <div class="text-[10.5px] font-medium text-emerald-600 mt-0.5">SoftServe &bull; 2019–2021</div>
+                        <div class="text-zinc-400 mt-2 text-xs leading-relaxed">Built GCP infrastructure-as-code with Terraform/Ansible/Jenkins; trained and mentored 10+ junior SREs and DevOps engineers.</div>
+                    </div>
+                    <div class="glass rounded-2xl p-5">
+                        <div class="font-semibold">DevOps Engineer</div>
+                        <div class="text-[10.5px] font-medium text-emerald-600 mt-0.5">Mansion Group &bull; 2018–2019</div>
+                        <div class="text-zinc-400 mt-2 text-xs leading-relaxed">Puppet + Red Hat Satellite orchestration for 200+ VMs; Bamboo CI/CD pipelines and Windows/Linux machine automation.</div>
+                    </div>
+                    <div class="glass rounded-2xl p-5">
+                        <div class="font-semibold">Senior SRE &bull; SysAdmin &bull; Tech Lead</div>
+                        <div class="text-[10.5px] font-medium text-emerald-600 mt-0.5">HPE &bull; GoDaddy &bull; MochaHost &bull; 2013–2018</div>
+                        <div class="text-zinc-400 mt-2 text-xs leading-relaxed">Linux/Unix operations, ITIL monitoring, customer escalation, and infrastructure automation across enterprise and hosting environments.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="projects" class="ps wrap" style="padding-bottom:48px;">
+        <div class="inner">
+            <div class="chapter-label">
+                <span class="cl-num">Chapter 03</span>
+                <span class="cl-sep">/</span>
+                <span class="cl-name">Innovation Lab</span>
+            </div>
+
+            <div class="print-ch">
+                <span class="pch-eyebrow">Chapter 03 &nbsp;/&nbsp; Innovation Lab</span>
+                <span class="pch-title">Side Projects</span>
+            </div>
+
+            <h2 class="section-header mb-3">Side Projects</h2>
+            <p class="text-zinc-400 text-sm mb-8">Solo-built systems demonstrating architectural thinking, AI fluency, and full-stack execution. All private repos available upon request.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass rounded-3xl p-7 project-card border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-tree text-2xl" style="color: #10b981;"></i>
+                            <div>
+                                <div class="font-semibold text-xl">StoryTree</div>
+                                <div class="text-xs tracking-wider" style="color: #10b981;">LIVE &bull; 2025</div>
+                            </div>
+                        </div>
+                        <div class="text-xs px-3 py-1 rounded-full border" style="background: rgba(16,185,129,.1); color: #10b981; border-color: rgba(16,185,129,.2);">AWS LAMBDA + FLUTTER</div>
+                    </div>
+                    <p class="text-[#0f172a] text-sm leading-relaxed">Serverless GenAI platform for personalized children's stories. Dynamic narrative engine powered by LLMs with voice synthesis, image generation, and parent controls.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">AWS Lambda</span>
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">OpenAI / Bedrock</span>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 project-card border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-brain text-2xl" style="color: #7c3aed;"></i>
+                            <div>
+                                <div class="font-semibold text-xl">SkyNet</div>
+                                <div class="text-xs tracking-wider" style="color: #7c3aed;">RESEARCH &bull; 2024-25</div>
+                            </div>
+                        </div>
+                        <div class="text-xs px-3 py-1 rounded-full border" style="background: rgba(124,58,237,.1); color: #7c3aed; border-color: rgba(124,58,237,.2);">PYTHON + WEBGL</div>
+                    </div>
+                    <p class="text-[#0f172a] text-sm leading-relaxed">Highly detailed anatomical + functional brain model with real-time simulation of curiosity, dopamine, serotonin, cortisol, and decision-making loops. Interactive 3D visualization.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Three.js / WebGL</span>
+                        <span class="tech-pill">NumPy / SciPy</span>
+                        <span class="tech-pill">FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 project-card border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-shield-halved text-2xl" style="color: #d97706;"></i>
+                            <div>
+                                <div class="font-semibold text-xl">Federated Municipal Storage</div>
+                                <div class="text-xs tracking-wider" style="color: #d97706;">POC &bull; 2025</div>
+                            </div>
+                        </div>
+                        <div class="text-xs px-3 py-1 rounded-full border" style="background: rgba(217,119,6,.1); color: #d97706; border-color: rgba(217,119,6,.2);">ENTERPRISE</div>
+                    </div>
+                    <p class="text-[#0f172a] text-sm leading-relaxed">Privacy-first federated storage architecture for municipal use. End-to-end encryption, sharded data across nodes, policy-based access, and audit trails. Built as production-grade POC for government clients.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill">Python + Java</span>
+                        <span class="tech-pill">gRPC</span>
+                        <span class="tech-pill">PostgreSQL + IPFS</span>
+                        <span class="tech-pill">Zero-Trust</span>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 project-card border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-chart-line text-2xl" style="color: #e11d48;"></i>
+                            <div>
+                                <div class="font-semibold text-xl">Aether Tradebot</div>
+                                <div class="text-xs tracking-wider" style="color: #e11d48;">LIVE &bull; 2024</div>
+                            </div>
+                        </div>
+                        <div class="text-xs px-3 py-1 rounded-full border" style="background: rgba(225,29,72,.1); color: #e11d48; border-color: rgba(225,29,72,.2);">FULL-STACK</div>
+                    </div>
+                    <p class="text-[#0f172a] text-sm leading-relaxed">Autonomous trading engine with multi-timeframe analysis, reinforcement learning signals, and real-time risk management. Includes beautiful dashboard, backtester, and paper/live execution modes.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill">Python + Java</span>
+                        <span class="tech-pill">Pandas / TA-Lib</span>
+                        <span class="tech-pill">React + Recharts</span>
+                        <span class="tech-pill">WebSocket</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERTISE -->
+    <div id="skills" class="ps wrap" style="padding-bottom:48px;">
+        <div class="inner">
+            <div class="chapter-label">
+                <span class="cl-num">Chapter 04</span>
+                <span class="cl-sep">/</span>
+                <span class="cl-name">Toolkit</span>
+            </div>
+
+            <div class="print-ch">
+                <span class="pch-eyebrow">Chapter 04 &nbsp;/&nbsp; Toolkit</span>
+                <span class="pch-title">Expertise</span>
+            </div>
+
+            <h2 class="section-header mb-8">Expertise</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass rounded-3xl p-7 border border-white/10">
+                    <div class="uppercase text-[9.5px] tracking-[3px] text-zinc-500 mb-5">Architecture &amp; Strategy</div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between items-center"><span>Solution Architecture</span><span class="text-emerald-600 text-xs">★★★★★</span></div>
+                        <div class="flex justify-between items-center"><span>Cloud Migration Strategy</span><span class="text-emerald-600 text-xs">★★★★★</span></div>
+                        <div class="flex justify-between items-center"><span>IBM Z / s390x Modernization</span><span class="text-emerald-600 text-xs">★★★★☆</span></div>
+                        <div class="flex justify-between items-center"><span>Hybrid Cloud Design</span><span class="text-emerald-600 text-xs">★★★★★</span></div>
+                        <div class="flex justify-between items-center"><span>Cost Optimization &amp; TCO</span><span class="text-emerald-600 text-xs">★★★★★</span></div>
+                        <div class="flex justify-between items-center"><span>Legacy Reverse Engineering</span><span class="text-emerald-600 text-xs">★★★★★</span></div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 border border-white/10">
+                    <div class="uppercase text-[9.5px] tracking-[3px] text-zinc-500 mb-5">Infrastructure &amp; Automation</div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-pill">Terraform</span><span class="tech-pill">Ansible</span>
+                        <span class="tech-pill">Puppet</span><span class="tech-pill">Helm</span>
+                        <span class="tech-pill">GitHub Actions</span><span class="tech-pill">Azure DevOps</span>
+                        <span class="tech-pill">Bamboo</span><span class="tech-pill">Jenkins</span>
+                        <span class="tech-pill">ArgoCD / Flux</span>
+                    </div>
+                    <div class="text-[9.5px] text-zinc-500 uppercase tracking-[2px] mt-5 mb-2">Cloud Platforms</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">AWS (EKS, Lambda, RDS)</span>
+                        <span class="tech-pill">Azure (AKS)</span>
+                        <span class="tech-pill">GCP</span>
+                        <span class="tech-pill">IBM Z / LinuxONE</span>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 border border-white/10">
+                    <div class="uppercase text-[9.5px] tracking-[3px] text-zinc-500 mb-5">Languages &amp; Runtimes</div>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <div class="flex justify-between mb-1.5"><span>Python</span><span class="text-emerald-600 text-[10px]">Expert &bull; GenAI / Data / Backend</span></div>
+                            <div class="h-1.5 bg-zinc-200 rounded-full"><div class="h-1.5 rounded-full" style="width:95%; background: var(--navy);"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5"><span>Java (s390x / Linux)</span><span class="text-emerald-600 text-[10px]">Advanced &bull; Debugging &amp; Build</span></div>
+                            <div class="h-1.5 bg-zinc-200 rounded-full"><div class="h-1.5 rounded-full" style="width:88%; background: var(--navy);"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5"><span>JavaScript / TypeScript</span><span class="text-emerald-600 text-[10px]">Strong &bull; Frontend + Node</span></div>
+                            <div class="h-1.5 bg-zinc-200 rounded-full"><div class="h-1.5 rounded-full" style="width:82%; background: var(--navy);"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1.5"><span>Go &bull; Bash &bull; PHP</span><span class="text-emerald-600 text-[10px]">Proficient</span></div>
+                            <div class="h-1.5 bg-zinc-200 rounded-full"><div class="h-1.5 rounded-full" style="width:65%; background: var(--navy);"></div></div>
+                        </div>
+                    </div>
+                    <div class="text-[9.5px] text-zinc-500 mt-5 leading-relaxed">
+                        Also fluent in: Docker &bull; Kubernetes &bull; ELK / Prometheus &bull; VMware Stack &bull; Red Hat / RHEL &bull; Agile &bull; ITIL &bull; Scrum
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap wrap" style="padding-bottom:64px;">
+        <div class="inner">
+            <div class="text-center py-12 border-t border-white/10">
+                <div class="uppercase tracking-[2.5px] text-[10px] text-zinc-500 mb-4">For Enterprises &amp; Consulting</div>
+                <h2 class="text-4xl font-display tracking-tight mb-5">Let's build something exceptional.</h2>
+                <p class="text-lg text-zinc-400 max-w-md mx-auto leading-relaxed">I'm selective about the projects I take on. If you have a complex infrastructure, modernization, or AI challenge — I'd love to hear about it.</p>
+                <div class="flex items-center justify-center gap-x-4 mt-10 flex-wrap gap-y-3">
+                    <a href="mailto:yankov.dimitur@gmail.com" class="inline-flex items-center gap-x-3 px-8 py-4 border border-white/25 hover:bg-white/5 font-medium rounded-3xl text-base transition-all">
+                        <i class="fa-solid fa-envelope"></i><span>Email Me</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dimitar-yankov-845a4b143/" target="_blank" class="inline-flex items-center gap-x-3 px-8 py-4 text-white font-semibold rounded-3xl text-base hover:brightness-110 transition-all" style="background: var(--navy);">
+                        <i class="fa-brands fa-linkedin"></i><span>Connect on LinkedIn</span>
+                    </a>
+                </div>
+                <div class="mt-12 text-xs text-zinc-600">© 2026 Dimitar Yankov &bull; Sofia, Bulgaria &bull; Remote Worldwide</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
